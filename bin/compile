@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+[ "$BUILDPACK_XTRACE" ] && set -o xtrace
+
+
+bin_dir=$(cd $(dirname $0); pwd) # absolute path
+root_dir=$(dirname $bin_dir)
+
+build_path=$1
+
+echo "Installing OPA into $build_path"
+mkdir -p $build_path/.profile.d
+cp $root_dir/scripts/run-opa.sh $build_path/.profile.d/run-opa.sh
+cp $root_dir/scripts/sync-policy.sh $build_path/sync-policy.sh
+cp $root_dir/opa $build_path/opa
+echo "Installed OPA"

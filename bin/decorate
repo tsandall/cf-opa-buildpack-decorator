@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "opa-cloudfoundry-buildpack-decorator/bin/decorate.sh enabling"
+exit 0
